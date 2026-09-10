@@ -26,6 +26,6 @@ export function ProjectCard({ project }: { project: Project }) {
     <span className="project-tracer" aria-hidden="true" /><div className="project-card-top"><span className={`status status-${project.status}`}>{statusLabels[project.status]}</span></div>
     <span className="project-area">{project.area}</span><h3>{project.title}</h3><p>{project.summary}</p>
     <div className="tags">{project.tags.slice(0, 3).map(tag => <span className="tag" key={tag}>{tag}</span>)}</div>
-    <span className="card-action"><span>Explorar projeto</span><span className="icon-orbit"><DirectionIcon /></span></span>
+    <span className="card-action"><span className="sr-only">Abrir detalhes de {project.title}</span><span className="icon-orbit"><DirectionIcon /></span></span>
   </Link>;
 }

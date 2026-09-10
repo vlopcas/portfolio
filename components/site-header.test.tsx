@@ -19,6 +19,15 @@ describe("SiteHeader", () => {
     expect(screen.queryByRole("navigation", { name: "Navegação móvel" })).not.toBeInTheDocument();
   });
 
+  it("closes the mobile navigation when clicking outside the header", async () => {
+    const user = userEvent.setup();
+    render(<><SiteHeader /><main>Conteúdo da página</main></>);
+    await user.click(screen.getByRole("button", { name: "Abrir menu" }));
+    expect(screen.getByRole("navigation", { name: "Navegação móvel" })).toBeInTheDocument();
+    await user.click(screen.getByRole("main"));
+    expect(screen.queryByRole("navigation", { name: "Navegação móvel" })).not.toBeInTheDocument();
+  });
+
   it("cycles and persists light, dark and system themes", async () => {
     const user = userEvent.setup();
     render(<SiteHeader />);
