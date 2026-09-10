@@ -14,8 +14,8 @@ export const metadata: Metadata = {
   robots: { index: allowIndexing, follow: allowIndexing, googleBot: { index: allowIndexing, follow: allowIndexing } },
   verification: googleSiteVerification ? { google: googleSiteVerification } : undefined,
   icons: { apple: [{ url: "/favicons/apple-touch-icon.png", sizes: "180x180", type: "image/png" }] },
-  openGraph: { title: "Victor Castro | Data Scientist, Software & AI", description: site.description, url: site.url, siteName: site.name, locale: "pt_BR", type: "website", images: [{ url: "/social-preview-v1.png", width: 1200, height: 630, alt: "Victor Castro — Data Scientist, Software, Dados e Inteligência Artificial" }] },
-  twitter: { card: "summary_large_image", title: "Victor Castro | Data Scientist, Software & AI", description: site.description, images: ["/social-preview-v1.png"] },
+  openGraph: { title: "Victor Castro | Data Scientist, Software & AI", description: site.description, url: site.url, siteName: site.name, locale: "pt_BR", type: "website", images: [{ url: "/social-preview-square-v1.png", width: 1200, height: 1200, alt: "Victor Castro — Data Scientist, Software, Dados e Inteligência Artificial" }] },
+  twitter: { card: "summary_large_image", title: "Victor Castro | Data Scientist, Software & AI", description: site.description, images: ["/social-preview-square-v1.png"] },
 };
 export const viewport: Viewport = { colorScheme: "dark light", themeColor: [{ media: "(prefers-color-scheme: light)", color: "#f6f6f3" }, { media: "(prefers-color-scheme: dark)", color: "#0b1014" }] };
 const themeScript = `(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}})()`;
