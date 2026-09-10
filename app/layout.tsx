@@ -13,7 +13,14 @@ export const metadata: Metadata = {
   manifest: "/manifest.webmanifest",
   robots: { index: allowIndexing, follow: allowIndexing, googleBot: { index: allowIndexing, follow: allowIndexing } },
   verification: googleSiteVerification ? { google: googleSiteVerification } : undefined,
-  icons: { apple: [{ url: "/favicons/apple-touch-icon.png", sizes: "180x180", type: "image/png" }] },
+  icons: {
+    icon: [
+      { url: "/favicons-brand/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicons-brand/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicons-brand/favicon-48x48.png", sizes: "48x48", type: "image/png" },
+    ],
+    apple: [{ url: "/favicons-brand/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
   openGraph: { title: "Victor Castro | Data Scientist, Software & AI", description: site.description, url: site.url, siteName: site.name, locale: "pt_BR", type: "website", images: [{ url: "/social-preview-square-v1.png", width: 1200, height: 1200, alt: "Victor Castro — Data Scientist, Software, Dados e Inteligência Artificial" }] },
   twitter: { card: "summary_large_image", title: "Victor Castro | Data Scientist, Software & AI", description: site.description, images: ["/social-preview-square-v1.png"] },
 };
@@ -27,5 +34,5 @@ const structuredData = {
   ],
 };
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="pt-BR" suppressHydrationWarning><head><link rel="icon" type="image/png" sizes="32x32" href="/favicons-light/favicon-32x32.png" media="(prefers-color-scheme: light)"/><link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" media="(prefers-color-scheme: dark)"/><script dangerouslySetInnerHTML={{ __html: themeScript }}/><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}/></head><body><a className="skip-link" href="#conteudo">Pular para o conteúdo</a><SiteHeader/><main id="conteudo">{children}</main><SiteFooter/><WhatsAppFloat/></body></html>;
+  return <html lang="pt-BR" suppressHydrationWarning><head><script dangerouslySetInnerHTML={{ __html: themeScript }}/><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}/></head><body><a className="skip-link" href="#conteudo">Pular para o conteúdo</a><SiteHeader/><main id="conteudo">{children}</main><SiteFooter/><WhatsAppFloat/></body></html>;
 }
