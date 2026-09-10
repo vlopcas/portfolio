@@ -6,7 +6,7 @@ export const site = {
   name: "Victor Castro",
   title: "Data Scientist | Software, Data & AI Systems",
   description:
-    "Portfólio de Victor Castro: sistemas de software, dados, machine learning e inteligência artificial aplicada.",
+    "Portfólio de Victor Castro com projetos e estudos de caso em ciência de dados, engenharia de software, machine learning, MLOps e inteligência artificial aplicada.",
   url: siteUrl,
   email: "victorlcastro.dsa@gmail.com",
   github: "https://github.com/vlopcas",
