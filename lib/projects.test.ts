@@ -1,0 +1,2 @@
+import {describe,expect,it} from "vitest";import {getProject,projects} from "./projects";
+describe("project content",()=>{it("has unique slugs",()=>{expect(new Set(projects.map(p=>p.slug)).size).toBe(projects.length)});it("resolves every project",()=>{for(const project of projects)expect(getProject(project.slug)).toEqual(project)});it("does not expose fake destinations",()=>{for(const project of projects)expect(project.repository).not.toBe("#")})});

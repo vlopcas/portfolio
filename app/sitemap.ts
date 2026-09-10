@@ -1,0 +1,2 @@
+import type {MetadataRoute} from "next";import {projects} from "@/lib/projects";import {site} from "@/lib/site";export const dynamic="force-static";
+export default function sitemap():MetadataRoute.Sitemap{const routes=["","/projects","/about","/experience"];return [...routes.map(route=>({url:`${site.url}${route}`,changeFrequency:"monthly" as const,priority:route===""?1:.8})),...projects.map(p=>({url:`${site.url}/projects/${p.slug}`,changeFrequency:"monthly" as const,priority:.7}))]}
