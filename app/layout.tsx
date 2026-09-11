@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import "../styles/theme-transition.css";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { WhatsAppFloat } from "@/components/whatsapp-float";
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title: "Victor Castro | Data Scientist, Software & AI", description: site.description, images: ["/images/social/preview-square.png"] },
 };
 export const viewport: Viewport = { colorScheme: "dark light", themeColor: [{ media: "(prefers-color-scheme: light)", color: "#f6f6f3" }, { media: "(prefers-color-scheme: dark)", color: "#0b1014" }] };
-const themeScript = `(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}})()`;
+const themeScript = `(function(){try{var t=localStorage.getItem('theme');var p=t==='light'||t==='dark'?t:'system';document.documentElement.dataset.themePreference=p;if(p!=='system')document.documentElement.dataset.theme=p}catch(e){}})()`;
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
@@ -34,5 +35,5 @@ const structuredData = {
   ],
 };
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="pt-BR" suppressHydrationWarning><head><script dangerouslySetInnerHTML={{ __html: themeScript }}/><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}/></head><body><a className="skip-link" href="#conteudo">Pular para o conteúdo</a><SiteHeader/><main id="conteudo">{children}</main><SiteFooter/><WhatsAppFloat/></body></html>;
+  return <html lang="pt-BR" suppressHydrationWarning><head><script dangerouslySetInnerHTML={{ __html: themeScript }}/><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}/></head><body><span className="theme-wash" aria-hidden="true"/><a className="skip-link" href="#conteudo">Pular para o conteúdo</a><SiteHeader/><main id="conteudo">{children}</main><SiteFooter/><WhatsAppFloat/></body></html>;
 }

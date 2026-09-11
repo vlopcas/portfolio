@@ -5,7 +5,14 @@ import { axe } from "vitest-axe";
 import { SiteHeader } from "./site-header";
 
 vi.mock("next/navigation", () => ({ usePathname: () => "/projects" }));
-afterEach(() => { cleanup(); localStorage.clear(); delete document.documentElement.dataset.theme; });
+afterEach(() => {
+  cleanup();
+  localStorage.clear();
+  document.documentElement.classList.remove("theme-transitioning");
+  delete document.documentElement.dataset.theme;
+  delete document.documentElement.dataset.themeDirection;
+  delete document.documentElement.dataset.themePreference;
+});
 
 describe("SiteHeader", () => {
   it("opens and closes the mobile navigation with keyboard controls", async () => {
@@ -34,12 +41,24 @@ describe("SiteHeader", () => {
     const trigger = screen.getByRole("button", { name: /Tema atual/ });
     await user.click(trigger);
     expect(document.documentElement.dataset.theme).toBe("light");
+    expect(document.documentElement.dataset.themePreference).toBe("light");
     expect(localStorage.getItem("theme")).toBe("light");
     await user.click(trigger);
     expect(document.documentElement.dataset.theme).toBe("dark");
+    expect(document.documentElement).toHaveClass("theme-transitioning");
+    expect(document.documentElement.dataset.themeDirection).toBe("to-dark");
     await user.click(trigger);
     expect(document.documentElement.dataset.theme).toBeUndefined();
+    expect(document.documentElement.dataset.themePreference).toBe("system");
     expect(localStorage.getItem("theme")).toBeNull();
+  });
+
+  it("starts from the preference applied before hydration", () => {
+    localStorage.setItem("theme", "dark");
+    document.documentElement.dataset.theme = "dark";
+    document.documentElement.dataset.themePreference = "dark";
+    render(<SiteHeader />);
+    expect(screen.getByRole("button", { name: "Tema atual: escuro. Alterar tema" })).toBeInTheDocument();
   });
 
   it("has no detectable accessibility violations", async () => {

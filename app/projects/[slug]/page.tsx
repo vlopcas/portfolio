@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AiIcon, ChartIcon, DataIcon, DirectionIcon, DocumentIcon, ExternalIcon, MlIcon, MonitorIcon, ShieldIcon, SourceIcon, TransformIcon, WorkflowIcon } from "@/components/icons";
+import { RouteHero } from "@/components/route-hero";
 import { getProject, projects, statusLabels } from "@/lib/projects";
 import { notFound } from "next/navigation";
 
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params; const p = getProject(slug); if (!p) notFound();
   const index = projects.findIndex(x => x.slug === p.slug); const prev = projects[(index - 1 + projects.length) % projects.length]; const next = projects[(index + 1) % projects.length];
-  return <><header className={`page-header route-hero case-page-header project-hero-${p.slug}`}><div className="container"><Link className="back-link" href="/projects"><DirectionIcon/> Todos os projetos</Link><div className="case-header"><div><span className={`status status-${p.status}`}>{statusLabels[p.status]}</span><span className="project-area">{p.area}</span><h1 className="page-title">{p.title}</h1><p className="lead">{p.summary}</p><div className="tags">{p.tags.map(t => <span className="tag" key={t}>{t}</span>)}</div></div></div></div></header>
+  return <><RouteHero className={`case-page-header project-hero-${p.slug}`}><div className="container"><Link className="back-link" href="/projects"><DirectionIcon/> Todos os projetos</Link><div className="case-header"><div><span className={`status status-${p.status}`}>{statusLabels[p.status]}</span><span className="project-area">{p.area}</span><h1 className="page-title">{p.title}</h1><p className="lead">{p.summary}</p><div className="tags">{p.tags.map(t => <span className="tag" key={t}>{t}</span>)}</div></div></div></div></RouteHero>
     <article className="container section case-study"><section className="case-intro"><div><span className="eyebrow">Visão geral</span><h2>Contexto antes da tecnologia.</h2><p>{p.overview}</p></div></section>
       <div className="case-grid"><section className="case-panel"><span className="panel-label">O desafio</span><h2>Problema</h2><p>{p.problem}</p></section><section className="case-panel accent-panel"><span className="panel-label">{p.status === "planned" ? "Proposta" : "Construção"}</span><h2>Abordagem</h2><p>{p.approach}</p></section></div>
       <section className="architecture-section"><div className="section-title-row"><div><span className="eyebrow">{p.status === "planned" ? "Arquitetura proposta" : "Arquitetura atual"}</span><h2>Como as partes se conectam.</h2></div></div><ol className="architecture-flow">{p.architecture.map((step, stepIndex) => { const Icon = iconForStep(step); return <li key={step}><span className="flow-icon"><Icon/></span><strong>{step}</strong>{stepIndex < p.architecture.length - 1 && <span className="flow-connector" aria-hidden="true"><DirectionIcon/></span>}</li>; })}</ol></section>

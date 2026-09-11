@@ -1,0 +1,123 @@
+:root {
+  --theme-transition-fast: 360ms;
+  --theme-transition-medium: 520ms;
+  --theme-transition-slow: 660ms;
+  --theme-transition-easing: cubic-bezier(.22, 1, .36, 1);
+  --theme-origin-x: 100vw;
+  --theme-origin-y: 0;
+}
+
+.theme-background,
+.theme-background-layer {
+  position: absolute;
+  inset: 0;
+  display: block;
+  pointer-events: none;
+}
+
+.theme-background-dark,
+.theme-image-dark { opacity: 0; }
+.theme-background-light,
+.theme-image-light { opacity: 1; }
+
+[data-theme="dark"] .theme-background-dark,
+[data-theme="dark"] .theme-image-dark { opacity: 1; }
+[data-theme="dark"] .theme-background-light,
+[data-theme="dark"] .theme-image-light { opacity: 0; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-background-dark,
+  :root:not([data-theme="light"]) .theme-image-dark { opacity: 1; }
+  :root:not([data-theme="light"]) .theme-background-light,
+  :root:not([data-theme="light"]) .theme-image-light { opacity: 0; }
+}
+
+.theme-wash {
+  position: fixed;
+  z-index: 45;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at var(--theme-origin-x) var(--theme-origin-y), rgb(255 255 255 / 16%), transparent min(62vw, 52rem));
+  mix-blend-mode: soft-light;
+}
+
+.theme-transitioning .theme-background-layer,
+.theme-transitioning .theme-image > img {
+  transition: opacity var(--theme-transition-slow) var(--theme-transition-easing);
+}
+
+.theme-transitioning body,
+.theme-transitioning .site-header,
+.theme-transitioning .mobile-nav,
+.theme-transitioning .site-footer,
+.theme-transitioning .card,
+.theme-transitioning .project-card,
+.theme-transitioning .area,
+.theme-transitioning .cta,
+.theme-transitioning .case-panel,
+.theme-transitioning .project-state,
+.theme-transitioning .project-navigation a,
+.theme-transitioning .institution-logo,
+.theme-transitioning .education-logo,
+.theme-transitioning .education-card,
+.theme-transitioning .portrait-wrap,
+.theme-transitioning .icon-orbit,
+.theme-transitioning .journey-icon,
+.theme-transitioning .story-marker,
+.theme-transitioning .flow-icon,
+.theme-transitioning .status,
+.theme-transitioning .tag,
+.theme-transitioning .button,
+.theme-transitioning .theme-toggle,
+.theme-transitioning .menu-button {
+  transition-property: background-color, border-color, box-shadow, color, fill, stroke, opacity;
+  transition-duration: var(--theme-transition-medium);
+  transition-timing-function: var(--theme-transition-easing);
+}
+
+.theme-transitioning .page-title,
+.theme-transitioning .display,
+.theme-transitioning .lead,
+.theme-transitioning p,
+.theme-transitioning li,
+.theme-transitioning a,
+.theme-transitioning h1,
+.theme-transitioning h2,
+.theme-transitioning h3,
+.theme-transitioning strong,
+.theme-transitioning small,
+.theme-transitioning svg {
+  transition-property: color, fill, stroke;
+  transition-duration: var(--theme-transition-fast);
+  transition-timing-function: var(--theme-transition-easing);
+}
+
+.theme-transitioning[data-theme-direction="to-light"] .theme-wash {
+  animation: theme-wash-light var(--theme-transition-slow) var(--theme-transition-easing);
+}
+
+.theme-transitioning[data-theme-direction="to-dark"] .theme-wash {
+  background: radial-gradient(circle at var(--theme-origin-x) var(--theme-origin-y), rgb(0 0 0 / 18%), transparent min(62vw, 52rem));
+  animation: theme-wash-dark var(--theme-transition-slow) var(--theme-transition-easing);
+}
+
+@keyframes theme-wash-light {
+  0%, 100% { opacity: 0; }
+  42% { opacity: .72; }
+}
+
+@keyframes theme-wash-dark {
+  0%, 100% { opacity: 0; }
+  45% { opacity: .6; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --theme-transition-fast: 1ms;
+    --theme-transition-medium: 1ms;
+    --theme-transition-slow: 1ms;
+  }
+
+  .theme-wash { display: none; }
+}

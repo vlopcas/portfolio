@@ -9,15 +9,22 @@
 
 .route-hero > .container { position: relative; z-index: 1; }
 
-.route-hero::before {
-  content: "";
+.route-hero > .theme-background {
   position: absolute;
   z-index: -2;
   inset: 0;
-  background: var(--route-hero-light) center / cover no-repeat;
   opacity: .34;
   filter: saturate(.96) contrast(1.02);
 }
+
+.route-hero .theme-background-layer {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.route-hero .theme-background-light { background-image: var(--route-hero-light); }
+.route-hero .theme-background-dark { background-image: var(--route-hero-dark); }
 
 .route-hero::after {
   content: "";
@@ -38,38 +45,38 @@
 .project-hero-energy-load-forecasting { --route-hero-light: url('/images/backgrounds/projects/energy-load-forecasting-light.webp'); --route-hero-dark: url('/images/backgrounds/projects/energy-load-forecasting-dark.webp'); }
 .project-hero-coping-struggles-prediction { --route-hero-light: url('/images/backgrounds/projects/coping-struggles-prediction-light.webp'); --route-hero-dark: url('/images/backgrounds/projects/coping-struggles-prediction-dark.webp'); }
 
-.case-page-header.route-hero::before { opacity: .3; }
+.case-page-header.route-hero > .theme-background { opacity: .3; }
 
-[data-theme="dark"] .route-hero::before {
-  background-image: var(--route-hero-dark);
+[data-theme="dark"] .route-hero > .theme-background {
   opacity: .38;
   filter: saturate(.9) contrast(1.04);
 }
 
-[data-theme="dark"] .case-page-header.route-hero::before { opacity: .34; }
+[data-theme="dark"] .case-page-header.route-hero > .theme-background { opacity: .34; }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .route-hero::before {
-    background-image: var(--route-hero-dark);
+  :root:not([data-theme="light"]) .route-hero > .theme-background {
     opacity: .38;
     filter: saturate(.9) contrast(1.04);
   }
-  :root:not([data-theme="light"]) .case-page-header.route-hero::before { opacity: .34; }
+  :root:not([data-theme="light"]) .case-page-header.route-hero > .theme-background { opacity: .34; }
 }
 
 @media (max-width: 720px) {
-  .route-hero::before { background-position: 62% center; opacity: .28; }
-  .case-page-header.route-hero::before { background-position: center; opacity: .25; }
+  .route-hero > .theme-background { opacity: .28; }
+  .route-hero .theme-background-layer { background-position: 62% center; }
+  .case-page-header.route-hero > .theme-background { opacity: .25; }
+  .case-page-header.route-hero .theme-background-layer { background-position: center; }
   .route-hero::after {
     background:
       linear-gradient(90deg, var(--background) 0%, color-mix(in srgb, var(--background) 80%, transparent) 62%, color-mix(in srgb, var(--background) 48%, transparent) 100%),
       linear-gradient(0deg, var(--background) 0%, transparent 32%, transparent 72%, color-mix(in srgb, var(--background) 65%, transparent) 100%);
   }
-  [data-theme="dark"] .route-hero::before { opacity: .31; }
-  [data-theme="dark"] .case-page-header.route-hero::before { opacity: .28; }
+  [data-theme="dark"] .route-hero > .theme-background { opacity: .31; }
+  [data-theme="dark"] .case-page-header.route-hero > .theme-background { opacity: .28; }
 }
 
 @media (max-width: 720px) and (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .route-hero::before { opacity: .31; }
-  :root:not([data-theme="light"]) .case-page-header.route-hero::before { opacity: .28; }
+  :root:not([data-theme="light"]) .route-hero > .theme-background { opacity: .31; }
+  :root:not([data-theme="light"]) .case-page-header.route-hero > .theme-background { opacity: .28; }
 }

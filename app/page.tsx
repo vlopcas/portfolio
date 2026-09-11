@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { AiIcon, CodeIcon, DataIcon, DirectionIcon, ExternalIcon, JourneyIcon, MlIcon, ScienceIcon, WhatsAppIcon } from "@/components/icons";
 import { ProjectCard } from "@/components/project-card";
+import { ThemeBackground } from "@/components/theme-background";
 import { ThemeImage } from "@/components/theme-image";
 import { projects } from "@/lib/projects";
 import { site } from "@/lib/site";
@@ -15,7 +16,7 @@ const areas = [
 
 export default function Home() {
   return <>
-    <section className="hero-stage"><div className="container hero">
+    <section className="hero-stage"><ThemeBackground className="hero-background"/><div className="container hero">
       <div className="hero-copy"><span className="eyebrow">Dados • Software • IA</span><h1 className="display">Olá, sou <span>Victor Castro.</span></h1><p>Atuo no desenvolvimento de aplicações, pipelines de dados, modelos de machine learning e soluções com IA, desde a análise do problema até a implementação e o acompanhamento em uso.</p><div className="hero-actions"><Link className="button button-primary" href="/projects">Conheça meu trabalho <DirectionIcon /></Link><a className="button" href="/cv-victor-castro.pdf" target="_blank">Ver currículo <ExternalIcon /></a></div></div>
       <div className="portrait-wrap"><ThemeImage className="theme-portrait" imageClassName="portrait" darkSrc="/images/portrait/victor-dark.webp" lightSrc="/images/portrait/victor-light.webp" alt="Retrato de Victor Castro" width={1000} height={1000} priority sizes="(max-width: 800px) 80vw, 34vw"/></div>
     </div></section>
