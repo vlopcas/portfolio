@@ -88,3 +88,23 @@
   .project-navigation small{display:none}
   .project-navigation strong{font-size:.82rem;line-height:1.3}
 }
+
+/* Route-specific first folds */
+.route-hero{--route-hero-light:none;--route-hero-dark:none;position:relative;isolation:isolate;overflow:hidden;background:var(--background)}
+.route-hero>.container{position:relative;z-index:1}
+.route-hero:before{content:"";position:absolute;z-index:-2;inset:0;background-image:var(--route-hero-light);background-position:center;background-size:cover;background-repeat:no-repeat;opacity:.34;filter:saturate(.96) contrast(1.02)}
+.route-hero:after{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(90deg,var(--background) 0%,color-mix(in srgb,var(--background) 88%,transparent) 34%,color-mix(in srgb,var(--background) 34%,transparent) 72%,color-mix(in srgb,var(--background) 68%,transparent) 100%),linear-gradient(0deg,var(--background) 0%,transparent 28%,transparent 76%,color-mix(in srgb,var(--background) 58%,transparent) 100%)}
+.about-header{--route-hero-light:url('/about-background-light.png');--route-hero-dark:url('/about-background-dark.png')}
+.experience-header{--route-hero-light:url('/experience-background-light.png');--route-hero-dark:url('/experience-background-dark.png')}
+.projects-header{--route-hero-light:url('/projects-background-light.png');--route-hero-dark:url('/projects-background-dark.png')}
+.project-hero-medaudit{--route-hero-light:url('/medaudit-background-light.png');--route-hero-dark:url('/medaudit-background-dark.png')}
+.project-hero-third-party-lifecycle{--route-hero-light:url('/third-party-lifecycle-background-light.png');--route-hero-dark:url('/third-party-lifecycle-background-dark.png')}
+.project-hero-municipal-fiscal-data-platform{--route-hero-light:url('/municipal-fiscal-data-platform-background-light.png');--route-hero-dark:url('/municipal-fiscal-data-platform-background-dark.png')}
+.project-hero-energy-load-forecasting{--route-hero-light:url('/energy-load-forecasting-background-light.png');--route-hero-dark:url('/energy-load-forecasting-background-dark.png')}
+.project-hero-coping-struggles-prediction{--route-hero-light:url('/coping-struggles-prediction-background-light.png');--route-hero-dark:url('/coping-struggles-prediction-background-dark.png')}
+.case-page-header.route-hero:before{opacity:.3;background-position:center}
+[data-theme="dark"] .route-hero:before{background-image:var(--route-hero-dark);opacity:.38;filter:saturate(.9) contrast(1.04)}
+[data-theme="dark"] .case-page-header.route-hero:before{opacity:.34}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .route-hero:before{background-image:var(--route-hero-dark);opacity:.38;filter:saturate(.9) contrast(1.04)}:root:not([data-theme="light"]) .case-page-header.route-hero:before{opacity:.34}}
+@media(max-width:720px){.route-hero:before{background-position:62% center;opacity:.28}.case-page-header.route-hero:before{opacity:.25;background-position:center}.route-hero:after{background:linear-gradient(90deg,var(--background) 0%,color-mix(in srgb,var(--background) 80%,transparent) 62%,color-mix(in srgb,var(--background) 48%,transparent) 100%),linear-gradient(0deg,var(--background) 0%,transparent 32%,transparent 72%,color-mix(in srgb,var(--background) 65%,transparent) 100%)}[data-theme="dark"] .route-hero:before{opacity:.31}[data-theme="dark"] .case-page-header.route-hero:before{opacity:.28}}
+@media(max-width:720px) and (prefers-color-scheme:dark){:root:not([data-theme="light"]) .route-hero:before{opacity:.31}:root:not([data-theme="light"]) .case-page-header.route-hero:before{opacity:.28}}
