@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
 
-const photo = (await readFile(new URL("../docs/victor.jpg", import.meta.url))).toString("base64");
+const photo = (await readFile(new URL("../docs/victor-perfil-dark.jpg", import.meta.url))).toString("base64");
 const hero = (await readFile(new URL("../docs/source-media/backgrounds/home/home-dark.png", import.meta.url))).toString("base64");
 const svg = `
 <svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">

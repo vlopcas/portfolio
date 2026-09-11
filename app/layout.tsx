@@ -29,7 +29,7 @@ const themeScript = `(function(){try{var t=localStorage.getItem('theme');if(t===
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
-    { "@type": "Person", "@id": `${site.url}/#person`, name: site.name, url: site.url, image: `${site.url}/images/portrait/victor.webp`, jobTitle: "Data Scientist", sameAs: [site.github, site.linkedin], knowsAbout: ["Software Engineering", "Data Engineering", "Data Science", "Machine Learning", "MLOps", "Artificial Intelligence"] },
+    { "@type": "Person", "@id": `${site.url}/#person`, name: site.name, url: site.url, image: `${site.url}/images/portrait/victor-dark.webp`, jobTitle: "Data Scientist", sameAs: [site.github, site.linkedin], knowsAbout: ["Software Engineering", "Data Engineering", "Data Science", "Machine Learning", "MLOps", "Artificial Intelligence"] },
     { "@type": "WebSite", "@id": `${site.url}/#website`, name: `${site.name} — Portfólio`, url: site.url, inLanguage: "pt-BR", publisher: { "@id": `${site.url}/#person` } },
   ],
 };

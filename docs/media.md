@@ -8,7 +8,8 @@ docs/source-media/
 ├── brand/
 └── institutions/
 
-docs/victor.jpg
+docs/victor-perfil-dark.jpg
+docs/victor-perfil-light.jpg
 
 public/
 ├── icons/
@@ -28,6 +29,6 @@ npm run images:optimize
 
 The optimization script intentionally keeps social previews and favicons in PNG for broad crawler and platform compatibility. Decorative page backgrounds and photographic assets use WebP to reduce transfer size.
 
-`docs/victor.jpg` is the approved portrait source referenced by the repository guidelines.
+`docs/victor-perfil-dark.jpg` and `docs/victor-perfil-light.jpg` are the approved portrait sources for their respective themes.
 
 `public/cv-victor-castro.pdf` remains at the public root because its URL is shared by other sites and must remain stable.

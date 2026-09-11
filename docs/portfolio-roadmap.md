@@ -29,7 +29,8 @@ docs/
 ├── portfolio-roadmap.md
 ├── visual-reference-pt1.png
 ├── visual-reference-pt2.png
-└── victor.jpg
+├── victor-perfil-dark.jpg
+└── victor-perfil-light.jpg
 ```
 
 The visual references define **visual intent**, not literal content.
@@ -1706,7 +1707,8 @@ portfolio/
 │   ├── portfolio-roadmap.md
 │   ├── visual-reference-pt1.png
 │   ├── visual-reference-pt2.png
-│   ├── victor.jpg
+│   ├── victor-perfil-dark.jpg
+│   ├── victor-perfil-light.jpg
 │   └── curriculum.pdf
 │
 ├── tests/
@@ -2254,7 +2256,7 @@ Before publishing project content:
 
 The two files in `/docs` are intended for implementation guidance.
 
-## `victor.jpg`
+## `victor-perfil-dark.jpg` and `victor-perfil-light.jpg`
 
 Primary portrait reference for the portfolio.
 

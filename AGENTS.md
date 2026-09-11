@@ -37,7 +37,8 @@ README.md
 docs/portfolio-roadmap.md
 docs/visual-reference-pt1.*
 docs/visual-reference-pt2.*
-docs/victor.jpg
+docs/victor-perfil-dark.jpg
+docs/victor-perfil-light.jpg
 docs/curriculum.pdf
 ```
 
@@ -48,7 +49,8 @@ docs/
 ├── portfolio-roadmap.md
 ├── visual-reference-pt1.*
 ├── visual-reference-pt2.*
-├── victor.jpg
+├── victor-perfil-dark.jpg
+├── victor-perfil-light.jpg
 └── curriculum.pdf
 ```
 
@@ -56,7 +58,7 @@ The roadmap is the main product and engineering specification.
 
 The two visual references are design-direction references only.
 
-`docs/victor.jpg` is the approved portrait source.
+`docs/victor-perfil-dark.jpg` and `docs/victor-perfil-light.jpg` are the approved portrait sources for dark and light themes.
 
 `docs/curriculum.pdf` is the primary source of truth for professional experience, education, roles, dates, and other résumé-derived information.
 
@@ -815,10 +817,11 @@ Use consistent easing.
 Source:
 
 ```text
-docs/victor.jpg
+docs/victor-perfil-dark.jpg
+docs/victor-perfil-light.jpg
 ```
 
-Treat it as the approved original/reference.
+Treat them as the approved theme-specific originals/references.
 
 For production serving:
 
@@ -1654,10 +1657,11 @@ Do not regenerate or heavily retouch the portrait during normal implementation.
 Use:
 
 ```text
-docs/victor.jpg
+docs/victor-perfil-dark.jpg
+docs/victor-perfil-light.jpg
 ```
 
-as source/reference.
+as theme-specific sources/references.
 
 Create an optimized web-serving copy as needed.
 
@@ -1840,7 +1844,7 @@ Keep these assumptions unless explicitly changed:
 Brand accent: orange
 Visual style: minimal / technical / editorial
 Themes: system + light + dark
-Primary portrait: docs/victor.jpg
+Primary portraits: docs/victor-perfil-dark.jpg and docs/victor-perfil-light.jpg
 Framework direction: Next.js App Router
 Language: TypeScript
 Styling: Tailwind CSS + semantic tokens

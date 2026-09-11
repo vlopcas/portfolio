@@ -19,7 +19,8 @@ const backgrounds = [
 ];
 
 const rasterAssets = [
-  { source: "docs/victor.jpg", destination: "public/images/portrait/victor.webp", width: 1000, quality: 84 },
+  { source: "docs/victor-perfil-dark.jpg", destination: "public/images/portrait/victor-dark.webp", width: 1000, quality: 84 },
+  { source: "docs/victor-perfil-light.jpg", destination: "public/images/portrait/victor-light.webp", width: 1000, quality: 84 },
   { source: "docs/source-media/brand/logo.png", destination: "public/images/brand/logo-dark.png", width: 256 },
   { source: "docs/source-media/brand/logo-preta.png", destination: "public/images/brand/logo-light.png", width: 256 },
   { source: "docs/source-media/institutions/ada-logo.jpg", destination: "public/images/institutions/ada.webp", width: 360, quality: 84 },
