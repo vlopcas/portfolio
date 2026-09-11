@@ -99,4 +99,6 @@ npm test
 npm run build
 ```
 
+Para atualizar imagens originais e regenerar os arquivos WebP usados em produção, consulte [docs/media.md](docs/media.md).
+
 O site é estático e não depende de CMS, banco de dados ou backend. Copie `.env.example` para `.env.local` e informe a URL pública final. Consulte o [guia de deployment](docs/deployment.md) antes da publicação.

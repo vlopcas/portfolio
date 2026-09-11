@@ -1,0 +1,75 @@
+.route-hero {
+  --route-hero-light: none;
+  --route-hero-dark: none;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--background);
+}
+
+.route-hero > .container { position: relative; z-index: 1; }
+
+.route-hero::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  background: var(--route-hero-light) center / cover no-repeat;
+  opacity: .34;
+  filter: saturate(.96) contrast(1.02);
+}
+
+.route-hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background:
+    linear-gradient(90deg, var(--background) 0%, color-mix(in srgb, var(--background) 88%, transparent) 34%, color-mix(in srgb, var(--background) 34%, transparent) 72%, color-mix(in srgb, var(--background) 68%, transparent) 100%),
+    linear-gradient(0deg, var(--background) 0%, transparent 28%, transparent 76%, color-mix(in srgb, var(--background) 58%, transparent) 100%);
+}
+
+.about-header { --route-hero-light: url('/images/backgrounds/pages/about-light.webp'); --route-hero-dark: url('/images/backgrounds/pages/about-dark.webp'); }
+.experience-header { --route-hero-light: url('/images/backgrounds/pages/experience-light.webp'); --route-hero-dark: url('/images/backgrounds/pages/experience-dark.webp'); }
+.projects-header { --route-hero-light: url('/images/backgrounds/pages/projects-light.webp'); --route-hero-dark: url('/images/backgrounds/pages/projects-dark.webp'); }
+.project-hero-medaudit { --route-hero-light: url('/images/backgrounds/projects/medaudit-light.webp'); --route-hero-dark: url('/images/backgrounds/projects/medaudit-dark.webp'); }
+.project-hero-third-party-lifecycle { --route-hero-light: url('/images/backgrounds/projects/third-party-lifecycle-light.webp'); --route-hero-dark: url('/images/backgrounds/projects/third-party-lifecycle-dark.webp'); }
+.project-hero-municipal-fiscal-data-platform { --route-hero-light: url('/images/backgrounds/projects/municipal-fiscal-data-platform-light.webp'); --route-hero-dark: url('/images/backgrounds/projects/municipal-fiscal-data-platform-dark.webp'); }
+.project-hero-energy-load-forecasting { --route-hero-light: url('/images/backgrounds/projects/energy-load-forecasting-light.webp'); --route-hero-dark: url('/images/backgrounds/projects/energy-load-forecasting-dark.webp'); }
+.project-hero-coping-struggles-prediction { --route-hero-light: url('/images/backgrounds/projects/coping-struggles-prediction-light.webp'); --route-hero-dark: url('/images/backgrounds/projects/coping-struggles-prediction-dark.webp'); }
+
+.case-page-header.route-hero::before { opacity: .3; }
+
+[data-theme="dark"] .route-hero::before {
+  background-image: var(--route-hero-dark);
+  opacity: .38;
+  filter: saturate(.9) contrast(1.04);
+}
+
+[data-theme="dark"] .case-page-header.route-hero::before { opacity: .34; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .route-hero::before {
+    background-image: var(--route-hero-dark);
+    opacity: .38;
+    filter: saturate(.9) contrast(1.04);
+  }
+  :root:not([data-theme="light"]) .case-page-header.route-hero::before { opacity: .34; }
+}
+
+@media (max-width: 720px) {
+  .route-hero::before { background-position: 62% center; opacity: .28; }
+  .case-page-header.route-hero::before { background-position: center; opacity: .25; }
+  .route-hero::after {
+    background:
+      linear-gradient(90deg, var(--background) 0%, color-mix(in srgb, var(--background) 80%, transparent) 62%, color-mix(in srgb, var(--background) 48%, transparent) 100%),
+      linear-gradient(0deg, var(--background) 0%, transparent 32%, transparent 72%, color-mix(in srgb, var(--background) 65%, transparent) 100%);
+  }
+  [data-theme="dark"] .route-hero::before { opacity: .31; }
+  [data-theme="dark"] .case-page-header.route-hero::before { opacity: .28; }
+}
+
+@media (max-width: 720px) and (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .route-hero::before { opacity: .31; }
+  :root:not([data-theme="light"]) .case-page-header.route-hero::before { opacity: .28; }
+}

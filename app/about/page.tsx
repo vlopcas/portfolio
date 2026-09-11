@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { JourneyIcon } from "@/components/icons";
-import victorPhoto from "@/public/victor.jpg";
+import victorPhoto from "@/public/images/portrait/victor.webp";
 
 export const metadata: Metadata = { title: "Sobre", description: "A trajetória de Victor Castro entre ciência, dados, software e inteligência artificial.", alternates: { canonical: "/about" } };
 

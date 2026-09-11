@@ -2,8 +2,8 @@ import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
 
-const photo = (await readFile(new URL("../public/victor.jpg", import.meta.url))).toString("base64");
-const hero = (await readFile(new URL("../public/hero.png", import.meta.url))).toString("base64");
+const photo = (await readFile(new URL("../docs/victor.jpg", import.meta.url))).toString("base64");
+const hero = (await readFile(new URL("../docs/source-media/backgrounds/home/home-dark.png", import.meta.url))).toString("base64");
 const svg = `
 <svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
   <defs>
@@ -29,7 +29,7 @@ const svg = `
   <image href="data:image/jpeg;base64,${photo}" x="800" y="50" width="350" height="530" preserveAspectRatio="xMidYMid slice" clip-path="url(#photo)"/>
 </svg>`;
 
-await sharp(Buffer.from(svg)).png().toFile(fileURLToPath(new URL("../public/social-preview-v1.png", import.meta.url)));
+await sharp(Buffer.from(svg)).png().toFile(fileURLToPath(new URL("../public/images/social/preview-horizontal.png", import.meta.url)));
 
 const squareSvg = `
 <svg width="1200" height="1200" viewBox="0 0 1200 1200" xmlns="http://www.w3.org/2000/svg">
@@ -56,4 +56,4 @@ const squareSvg = `
   <text x="600" y="1122" text-anchor="middle" fill="#f2f4f5" font-family="Arial, sans-serif" font-size="28" font-weight="700">vlopcas.dev</text>
 </svg>`;
 
-await sharp(Buffer.from(squareSvg)).png().toFile(fileURLToPath(new URL("../public/social-preview-square-v1.png", import.meta.url)));
+await sharp(Buffer.from(squareSvg)).png().toFile(fileURLToPath(new URL("../public/images/social/preview-square.png", import.meta.url)));

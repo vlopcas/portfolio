@@ -4,7 +4,7 @@ import { AiIcon, CodeIcon, DataIcon, DirectionIcon, ExternalIcon, JourneyIcon, M
 import { ProjectCard } from "@/components/project-card";
 import { projects } from "@/lib/projects";
 import { site } from "@/lib/site";
-import victorPhoto from "@/public/victor.jpg";
+import victorPhoto from "@/public/images/portrait/victor.webp";
 
 const areas = [
   { title: "Software Engineering", text: "Aplicações web, APIs e definição de arquitetura para produtos e processos.", icon: CodeIcon },
