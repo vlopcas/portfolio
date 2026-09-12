@@ -1,8 +1,24 @@
+@property --background { syntax: "<color>"; inherits: true; initial-value: #f6f6f3; }
+@property --surface { syntax: "<color>"; inherits: true; initial-value: #ffffff; }
+@property --surface-2 { syntax: "<color>"; inherits: true; initial-value: #eceeea; }
+@property --text { syntax: "<color>"; inherits: true; initial-value: #161b20; }
+@property --text-soft { syntax: "<color>"; inherits: true; initial-value: #59636d; }
+@property --border { syntax: "<color>"; inherits: true; initial-value: #d9ddd9; }
+@property --border-strong { syntax: "<color>"; inherits: true; initial-value: #adb5bc; }
+@property --accent { syntax: "<color>"; inherits: true; initial-value: #c94b0c; }
+@property --accent-hover { syntax: "<color>"; inherits: true; initial-value: #a93c07; }
+@property --accent-fg { syntax: "<color>"; inherits: true; initial-value: #ffffff; }
+@property --focus { syntax: "<color>"; inherits: true; initial-value: #e8580c; }
+@property --success { syntax: "<color>"; inherits: true; initial-value: #147a55; }
+@property --warning { syntax: "<color>"; inherits: true; initial-value: #8b5e09; }
+@property --info { syntax: "<color>"; inherits: true; initial-value: #315b87; }
+@property --logo-surface { syntax: "<color>"; inherits: true; initial-value: #f1f3f4; }
+@property --logo-border { syntax: "<color>"; inherits: true; initial-value: #d7dbdf; }
+@property --shadow-color { syntax: "<color>"; inherits: true; initial-value: rgb(30 40 48 / 8%); }
+
 :root {
-  --theme-transition-fast: 360ms;
-  --theme-transition-medium: 520ms;
-  --theme-transition-slow: 660ms;
-  --theme-transition-easing: cubic-bezier(.22, 1, .36, 1);
+  --theme-transition-duration: 900ms;
+  --theme-transition-easing: cubic-bezier(.22, .72, .18, 1);
   --theme-origin-x: 100vw;
   --theme-origin-y: 0;
 }
@@ -38,86 +54,41 @@
   inset: 0;
   pointer-events: none;
   opacity: 0;
-  background: radial-gradient(circle at var(--theme-origin-x) var(--theme-origin-y), rgb(255 255 255 / 16%), transparent min(62vw, 52rem));
+  background: radial-gradient(circle at var(--theme-origin-x) var(--theme-origin-y), rgb(255 255 255 / 13%), transparent min(68vw, 58rem));
   mix-blend-mode: soft-light;
 }
 
+/* Every theme-derived color follows this single lighting timeline. */
+:root.theme-transitioning {
+  transition-property: --background, --surface, --surface-2, --text, --text-soft,
+    --border, --border-strong, --accent, --accent-hover, --accent-fg, --focus,
+    --success, --warning, --info, --logo-surface, --logo-border, --shadow-color;
+  transition-duration: var(--theme-transition-duration);
+  transition-timing-function: var(--theme-transition-easing);
+}
+
 .theme-transitioning .theme-background-layer,
-.theme-transitioning .theme-image > img {
-  transition: opacity var(--theme-transition-slow) var(--theme-transition-easing);
-}
-
-.theme-transitioning body,
-.theme-transitioning .site-header,
-.theme-transitioning .mobile-nav,
-.theme-transitioning .site-footer,
-.theme-transitioning .card,
-.theme-transitioning .project-card,
-.theme-transitioning .area,
-.theme-transitioning .cta,
-.theme-transitioning .case-panel,
-.theme-transitioning .project-state,
-.theme-transitioning .project-navigation a,
-.theme-transitioning .institution-logo,
-.theme-transitioning .education-logo,
-.theme-transitioning .education-card,
-.theme-transitioning .portrait-wrap,
-.theme-transitioning .icon-orbit,
-.theme-transitioning .journey-icon,
-.theme-transitioning .story-marker,
-.theme-transitioning .flow-icon,
-.theme-transitioning .status,
-.theme-transitioning .tag,
-.theme-transitioning .button,
-.theme-transitioning .theme-toggle,
-.theme-transitioning .menu-button {
-  transition-property: background-color, border-color, box-shadow, color, fill, stroke, opacity;
-  transition-duration: var(--theme-transition-medium);
+.theme-transitioning .theme-image > img,
+.theme-transitioning .theme-background {
+  transition-property: opacity, filter;
+  transition-duration: var(--theme-transition-duration);
   transition-timing-function: var(--theme-transition-easing);
 }
 
-.theme-transitioning .page-title,
-.theme-transitioning .display,
-.theme-transitioning .lead,
-.theme-transitioning p,
-.theme-transitioning li,
-.theme-transitioning a,
-.theme-transitioning h1,
-.theme-transitioning h2,
-.theme-transitioning h3,
-.theme-transitioning strong,
-.theme-transitioning small,
-.theme-transitioning svg {
-  transition-property: color, fill, stroke;
-  transition-duration: var(--theme-transition-fast);
-  transition-timing-function: var(--theme-transition-easing);
-}
-
-.theme-transitioning[data-theme-direction="to-light"] .theme-wash {
-  animation: theme-wash-light var(--theme-transition-slow) var(--theme-transition-easing);
+.theme-transitioning .theme-wash {
+  animation: theme-lighting-wash var(--theme-transition-duration) var(--theme-transition-easing);
 }
 
 .theme-transitioning[data-theme-direction="to-dark"] .theme-wash {
-  background: radial-gradient(circle at var(--theme-origin-x) var(--theme-origin-y), rgb(0 0 0 / 18%), transparent min(62vw, 52rem));
-  animation: theme-wash-dark var(--theme-transition-slow) var(--theme-transition-easing);
+  background: radial-gradient(circle at var(--theme-origin-x) var(--theme-origin-y), rgb(0 0 0 / 15%), transparent min(68vw, 58rem));
 }
 
-@keyframes theme-wash-light {
+@keyframes theme-lighting-wash {
   0%, 100% { opacity: 0; }
-  42% { opacity: .72; }
-}
-
-@keyframes theme-wash-dark {
-  0%, 100% { opacity: 0; }
-  45% { opacity: .6; }
+  46% { opacity: .62; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :root {
-    --theme-transition-fast: 1ms;
-    --theme-transition-medium: 1ms;
-    --theme-transition-slow: 1ms;
-  }
-
+  :root { --theme-transition-duration: 1ms; }
   .theme-wash { display: none; }
 }

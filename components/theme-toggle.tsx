@@ -53,7 +53,7 @@ export function ThemeToggle() {
     cleanupRef.current = window.setTimeout(() => {
       root.classList.remove("theme-transitioning");
       delete root.dataset.themeDirection;
-    }, 720);
+    }, 980);
   }
 
   return <button ref={buttonRef} className="theme-toggle" type="button" onClick={cycle} aria-label={`Tema atual: ${labels[theme]}. Alterar tema`} suppressHydrationWarning>{theme === "system" ? "◐" : theme === "light" ? "☼" : "☾"}</button>;
