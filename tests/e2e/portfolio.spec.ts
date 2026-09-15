@@ -17,6 +17,7 @@ for (const route of routes) {
 }
 
 test("mobile navigation and theme work", async ({ page }, testInfo) => {
+  await page.emulateMedia({ colorScheme: "light" });
   await page.goto("/");
   if (testInfo.project.name === "mobile") {
     const menu = page.getByRole("button", { name: "Abrir menu" });
@@ -26,9 +27,12 @@ test("mobile navigation and theme work", async ({ page }, testInfo) => {
     await expect(page.getByRole("navigation", { name: "Navegação móvel" })).toBeHidden();
   }
   const theme = page.getByRole("button", { name: /Tema atual/ });
-  await theme.click();
-  await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+  await expect(theme).toHaveAccessibleName("Tema atual: claro. Alterar para tema escuro");
   await theme.click();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
   await page.screenshot({ path: testInfo.outputPath("theme-dark.png"), fullPage: true });
+  await theme.click();
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+  await page.reload();
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
 });
