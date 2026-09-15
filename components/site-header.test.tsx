@@ -35,22 +35,20 @@ describe("SiteHeader", () => {
     expect(screen.queryByRole("navigation", { name: "Navegação móvel" })).not.toBeInTheDocument();
   });
 
-  it("cycles and persists light, dark and system themes", async () => {
+  it("toggles and persists only light and dark themes", async () => {
     const user = userEvent.setup();
     render(<SiteHeader />);
     const trigger = screen.getByRole("button", { name: /Tema atual/ });
     await user.click(trigger);
-    expect(document.documentElement.dataset.theme).toBe("light");
-    expect(document.documentElement.dataset.themePreference).toBe("light");
-    expect(localStorage.getItem("theme")).toBe("light");
-    await user.click(trigger);
     expect(document.documentElement.dataset.theme).toBe("dark");
+    expect(document.documentElement.dataset.themePreference).toBe("dark");
+    expect(localStorage.getItem("theme")).toBe("dark");
     expect(document.documentElement).toHaveClass("theme-transitioning");
     expect(document.documentElement.dataset.themeDirection).toBe("to-dark");
     await user.click(trigger);
-    expect(document.documentElement.dataset.theme).toBeUndefined();
-    expect(document.documentElement.dataset.themePreference).toBe("system");
-    expect(localStorage.getItem("theme")).toBeNull();
+    expect(document.documentElement.dataset.theme).toBe("light");
+    expect(document.documentElement.dataset.themePreference).toBe("light");
+    expect(localStorage.getItem("theme")).toBe("light");
   });
 
   it("starts from the preference applied before hydration", () => {
@@ -58,7 +56,7 @@ describe("SiteHeader", () => {
     document.documentElement.dataset.theme = "dark";
     document.documentElement.dataset.themePreference = "dark";
     render(<SiteHeader />);
-    expect(screen.getByRole("button", { name: "Tema atual: escuro. Alterar tema" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Tema atual: escuro. Alterar para tema claro" })).toBeInTheDocument();
   });
 
   it("has no detectable accessibility violations", async () => {
