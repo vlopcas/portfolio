@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event";
 import { axe } from "vitest-axe";
 import { SiteHeader } from "./site-header";
 
-vi.mock("next/navigation", () => ({ usePathname: () => "/projects" }));
+vi.mock("next/navigation", () => ({ usePathname: () => "/projects/medaudit" }));
 afterEach(() => {
   cleanup();
   localStorage.clear();
@@ -15,6 +15,14 @@ afterEach(() => {
 });
 
 describe("SiteHeader", () => {
+  it("marks a parent navigation item as current on nested routes", async () => {
+    const user = userEvent.setup();
+    render(<SiteHeader />);
+    expect(screen.getByRole("navigation", { name: "Navegação principal" }).querySelector('a[aria-current="page"]')).toHaveTextContent("Projetos");
+    await user.click(screen.getByRole("button", { name: "Abrir menu" }));
+    expect(screen.getByRole("navigation", { name: "Navegação móvel" }).querySelector('a[aria-current="page"]')).toHaveTextContent("Projetos");
+  });
+
   it("opens and closes the mobile navigation with keyboard controls", async () => {
     const user = userEvent.setup();
     render(<SiteHeader />);
