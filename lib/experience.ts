@@ -25,6 +25,7 @@ export const experiences: readonly Experience[] = [
     role: "Full-Stack Developer",
     org: "Ágil Serviços",
     start: "2024",
+    end: "2025",
     logo: "/images/institutions/agil.webp",
     details: [
       "Interfaces em React e TypeScript integradas a APIs desenvolvidas em Python.",
