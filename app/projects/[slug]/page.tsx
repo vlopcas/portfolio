@@ -13,7 +13,9 @@ function iconForStep(step: string) {
   if (/marts|analític|dashboard/.test(value)) return ChartIcon;
   if (/valida|avalia|aprova|conformidade|qualidade/.test(value)) return ShieldIcon;
   if (/monitor|renova|ciclo/.test(value)) return MonitorIcon;
-  if (/workflow|estado/.test(value)) return WorkflowIcon;
+  if (/workflow|estado|regra|roteamento|planejamento/.test(value)) return WorkflowIcon;
+  if (/grafo|relaç/.test(value)) return MlIcon;
+  if (/contexto|verifica|segurança/.test(value)) return ShieldIcon;
   if (/modelo|treino|ensemble|previs/.test(value)) return MlIcon;
   if (/rag|llm|gera|recupera|bm25|índice/.test(value)) return AiIcon;
   return DataIcon;
